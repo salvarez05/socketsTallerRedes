@@ -1,4 +1,5 @@
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.*;
 import java.util.logging.Level;
@@ -20,7 +21,9 @@ public class Servidor {
             numero = in.readUTF();
             int numeroapow = Integer.parseInt(numero);
             int pow = (int) Math.pow(numeroapow, 2);
-            System.out.println(pow);
+            DataOutputStream out = new DataOutputStream(misocket.getOutputStream());
+            out.writeUTF(String.valueOf(pow));
+            System.out.println("Numero elevado");
             misocket.close();
             System.out.println("Cliente desconectado");
 
@@ -31,3 +34,4 @@ public class Servidor {
     }
 
 }
+
