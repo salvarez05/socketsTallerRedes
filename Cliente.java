@@ -15,6 +15,11 @@ public class Cliente {
                 System.out.println("Ingrese numero entero a elevar al cuadrado");
                 int numero = teclado.nextInt();
                 numeros.writeUTF(String.valueOf(numero));
+                DataInputStream in = new DataInputStream(misocket.getInputStream());
+                String numeroRecivido="";
+                numeroRecivido=in.readUTF();
+                int numeroPotenciado=Integer.parseInt(numeroRecivido);
+                System.out.println(numeroPotenciado);
                 misocket.close();
                 System.out.println("Desconectado");
 
